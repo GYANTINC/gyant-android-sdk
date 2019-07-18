@@ -1,9 +1,6 @@
 
 Gyant Android SDK
-
 ==================
-
-  
 
 ![Logo](https://gyant.com/wp-content/uploads/2018/10/Gyant.Logotype.HorizontalLeft@2x-1.png)
 
