@@ -112,7 +112,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
-## Create a Actvity
+## Create an Activity
 
 ```
 public class DisplayGyantChatActivity extends GyantChatActivity {  
