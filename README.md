@@ -32,7 +32,6 @@ GYANT combines messaging, AI, and medical experts to radically improve the diagn
 On https://github.com/GYANTINC/gyant-android-sdk download the release and debug gyant's sdks aar.
 
   
-
 # Config project
 
 Add both files to libs folder, then go to project structure and add an new jar dependency:
@@ -76,19 +75,19 @@ Add both files to libs folder, then go to project structure and add an new jar d
 ## Create a view
 
 ```
-		@Override  
-	protected void onCreate(Bundle savedInstanceState) {  
-	    super.onCreate(savedInstanceState);  
-	    setContentView(R.layout.activity_display_gyant_view);  
+@Override  
+protected void onCreate(Bundle savedInstanceState) {  
+	super.onCreate(savedInstanceState);  
+	setContentView(R.layout.activity_display_gyant_view);  
 	  
-	    GyantChat gyantChat = new GyantChat();  
-	    gyantChat.gyantChatInit("client_id",  "pacient_id", isDev);  
+	GyantChat gyantChat = new GyantChat();  
+	gyantChat.gyantChatInit("client_id",  "pacient_id", isDev);  
 	  
-	    View gyantView = gyantChat.gyantChatView(this, getLifecycle());  
+	View gyantView = gyantChat.gyantChatView(this, getLifecycle());  
 	  
-	    FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);  
-	    frameLayout.addView(gyantView);  
-	}
+	FrameLayout frameLayout = (FrameLayout) findViewById(R.id.frame_layout);  
+	frameLayout.addView(gyantView);  
+}
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
