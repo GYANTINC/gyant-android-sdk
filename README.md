@@ -72,7 +72,7 @@ Add both files to libs folder, then go to project structure and add an new jar d
 
 # Getting Started
 
-## Create a view
+### Create a view
 
 ```
 @Override  
@@ -91,7 +91,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
-## Create a Fragment
+### Create a Fragment
 
 ```
 @Override  
@@ -112,7 +112,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
-## Create an Activity
+### Create an Activity
 
 ```
 public class DisplayGyantChatActivity extends GyantChatActivity {  
@@ -126,5 +126,11 @@ public class DisplayGyantChatActivity extends GyantChatActivity {
 }
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production and gyantChatInit should be called before onCreate.
+
+
+## Include the SDK for Android in an Existing Application
+
+The  [samples](https://github.com/GYANTINC/gyant-android-sdk-samples)  included with the SDK for Android are standalone projects that are already set up for you. You can also integrate the SDK for Android with your own existing project.
+
 
 **Copyright © 2019 GYANT.com, Inc. All rights reserved.**
