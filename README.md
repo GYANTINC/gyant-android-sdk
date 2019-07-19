@@ -40,10 +40,11 @@ You might need to add the following in your build.gradle:
 
 ```	
 android {
-	compileOptions {
-		sourceCompatibility 1.8
-		targetCompatibility 1.8
-	}
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
 ```
 
 GyantChatSDK does not support the simulator archs in release mode. To allow the integration of the SDK and further tests in the simulator we have created separated debug and release versions of the SDK. 
