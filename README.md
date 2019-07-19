@@ -71,7 +71,7 @@ Add the following permissions to your manifest file.
 <uses-permission  android:name="android.permission.INTERNET"/>
 <uses-permission  android:name="android.permission.ACCESS_NETWORK_STATE"/>
 <uses-permission  android:name="android.permission.ACCESS_FINE_LOCATION"/>
-<uses-permission android:name="android.permission.VIBRATE"/>
+<uses-permission  android:name="android.permission.VIBRATE"/>
 ```
 
 # Getting Started
