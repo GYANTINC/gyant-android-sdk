@@ -99,6 +99,18 @@ For presenting the chat interface GyantChatSDK provides three different methods.
 
 ### Gyant View
 
+```
+@Override  
+protected void onCreate(Bundle savedInstanceState) {  
+    super.onCreate(savedInstanceState);  
+
+    // ...
+    View gyantView = gyantChat.gyantChatView(this, getLifecycle());
+        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.someContainer);
+        frameLayout.addView(gyantView);
+}
+```
+
 ### Gyant Fragment
 
 ```
@@ -107,10 +119,6 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);  
 
     // ...
-    
-    GyantChat gyantChat = new GyantChat();  
-    gyantChat.gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);  
-  
     Fragment frag = gyantChat.gyantChatFragment();  
   
     getSupportFragmentManager()  
@@ -128,8 +136,8 @@ public class DisplayGyantChatActivity extends GyantChatActivity {
   
     @Override  
     protected void onCreate(Bundle savedInstanceState) {  
+    
     	// gyantChatInit should be called before onCreate
-    	new GyantChat().gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", isDev);  
     	super.onCreate(savedInstanceState);  
     }
 }
