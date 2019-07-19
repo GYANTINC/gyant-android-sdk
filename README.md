@@ -102,8 +102,9 @@ protected void onCreate(Bundle savedInstanceState) {
 @Override  
 protected void onCreate(Bundle savedInstanceState) {  
     super.onCreate(savedInstanceState);  
-    setContentView(R.layout.activity_display_fragment);  
-  
+
+    // ...
+    
     GyantChat gyantChat = new GyantChat();  
     gyantChat.gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);  
   
@@ -124,7 +125,7 @@ public class DisplayGyantChatActivity extends GyantChatActivity {
   
     @Override  
     protected void onCreate(Bundle savedInstanceState) {  
-    	//gyantChatInit should be called before onCreate
+    	// gyantChatInit should be called before onCreate
     	new GyantChat().gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", isDev);  
     	super.onCreate(savedInstanceState);  
     }
