@@ -100,32 +100,21 @@ For presenting the chat interface GyantChatSDK provides three different methods.
 ### Gyant View
 
 ```
-@Override  
-protected void onCreate(Bundle savedInstanceState) {  
-    super.onCreate(savedInstanceState);  
-
-    // ...
-    View gyantView = gyantChat.gyantChatView(this, getLifecycle());
-        FrameLayout frameLayout = (FrameLayout) findViewById(R.id.someContainer);
-        frameLayout.addView(gyantView);
-}
+View gyantView = gyantChat.gyantChatView(this, getLifecycle());
+FrameLayout frameLayout = (FrameLayout) findViewById(R.id.someContainer);
+frameLayout.addView(gyantView);
 ```
 
 ### Gyant Fragment
 
 ```
-@Override  
-protected void onCreate(Bundle savedInstanceState) {  
-    super.onCreate(savedInstanceState);  
 
-    // ...
-    Fragment frag = gyantChat.gyantChatFragment();  
-  
-    getSupportFragmentManager()  
-            .beginTransaction()  
-            .add(R.id.frame_layout, frag,  BuildConfig.APPLICATION_ID + ".GyantFragment")  
-            .commit();  
-}
+Fragment frag = gyantChat.gyantChatFragment();  
+
+getSupportFragmentManager()  
+    .beginTransaction()  
+    .add(R.id.frame_layout, frag,  BuildConfig.APPLICATION_ID + ".GyantFragment")  
+    .commit();
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
