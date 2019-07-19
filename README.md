@@ -55,11 +55,11 @@ dependencies {
     releaseImplementation files('libs/gyantchatsdk-release.aar')
 ```
 
-GyantChat requires access to play-services-location.
+GyantChat requires play-services-location.
 
 ```
 dependencies {
-    api 'com.google.android.gms:play-services-location:16.+'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 ```
 
 
