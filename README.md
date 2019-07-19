@@ -55,13 +55,11 @@ dependencies {
     releaseImplementation files('libs/gyantchatsdk-release.aar')
 ```
 
-In order to work correctly, GyantChat requires firebase-core and firebase-messaging 11.0.0 or higher. We highly recommend to use the latest version when possible. Add the following to your build.gradle, if not already present:
+GyantChat requires access to play-services-location.
 
 ```
 dependencies {
-...		
-	 api 'com.google.android.gms:play-services-location:16.+'
-	 api 'androidx.biometric:biometric:1.0.0-alpha04'
+    api 'com.google.android.gms:play-services-location:16.+'
 ```
 
 
@@ -88,6 +86,8 @@ protected void onCreate(Bundle savedInstanceState) {
 	
 	GyantChat gyantChat = new GyantChat();
 	gyantChat.gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
+	
+	
 }
 ```
 
