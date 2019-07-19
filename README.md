@@ -115,7 +115,6 @@ getSupportFragmentManager()
     .add(R.id.someContainer, frag,  BuildConfig.APPLICATION_ID + ".GyantFragment")  
     .commit();
 ```
-**Note**: The isDev parameter must be set to false before submitting the app to production.
 
 ### Gyant Activity
 
@@ -130,7 +129,6 @@ public class DisplayGyantChatActivity extends GyantChatActivity {
     }
 }
 ```
-**Note**: The isDev parameter must be set to false before submitting the app to production and gyantChatInit should be called before onCreate.
 
 
 ## Include the SDK for Android in an Existing Application
