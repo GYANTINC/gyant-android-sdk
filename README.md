@@ -85,9 +85,7 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);  
     
     // ...
-    
-    GyantChat gyantChat = new GyantChat();
-    gyantChat.gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
+    GyantChat.start("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
     
 }
 ```
@@ -101,7 +99,7 @@ For presenting the chat interface GyantChatSDK provides three different methods.
 ### Gyant View
 
 ```
-View gyantView = gyantChat.gyantChatView(this, getLifecycle());
+View chatView = GyantChat.createView(this, getLifecycle());
 FrameLayout frameLayout = (FrameLayout) findViewById(R.id.someContainer);
 frameLayout.addView(gyantView);
 ```
@@ -110,11 +108,11 @@ frameLayout.addView(gyantView);
 
 ```
 
-Fragment frag = gyantChat.gyantChatFragment();  
+Fragment frag = GyantChat.createFragment();  
 
 getSupportFragmentManager()  
     .beginTransaction()  
-    .add(R.id.frame_layout, frag,  BuildConfig.APPLICATION_ID + ".GyantFragment")  
+    .add(R.id.someContainer, frag,  BuildConfig.APPLICATION_ID + ".GyantFragment")  
     .commit();
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production.
@@ -127,7 +125,7 @@ public class DisplayGyantChatActivity extends GyantChatActivity {
     @Override  
     protected void onCreate(Bundle savedInstanceState) {  
     
-    	// gyantChatInit should be called before onCreate
+    	// GyantChat.start must be called before onCreate
     	super.onCreate(savedInstanceState);  
     }
 }
