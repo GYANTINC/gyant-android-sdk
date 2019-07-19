@@ -81,13 +81,16 @@ Add the following permissions to your manifest file.
 ```
 @Override  
 protected void onCreate(Bundle savedInstanceState) {  
-	super.onCreate(savedInstanceState);  
-	setContentView(R.layout.activity_display_gyant_view);
-	
-	GyantChat gyantChat = new GyantChat();
-	gyantChat.gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
-	
-	
+    super.onCreate(savedInstanceState);  
+    
+    // ...
+    
+    GyantChat gyantChat = new GyantChat();
+    gyantChat.gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
+    
+    View gyantView = gyantChat.gyantChatView(this, getLifecycle());
+    FrameLayout frameLayout = (FrameLayout) findViewById(R.id.someContainer);
+    frameLayout.addView(gyantView);
 }
 ```
 
@@ -121,10 +124,10 @@ public class DisplayGyantChatActivity extends GyantChatActivity {
   
     @Override  
     protected void onCreate(Bundle savedInstanceState) {  
-		//gyantChatInit should be called before onCreate
-		new GyantChat().gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", isDev);  
-		super.onCreate(savedInstanceState);  
-    }  
+    	//gyantChatInit should be called before onCreate
+    	new GyantChat().gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", isDev);  
+    	super.onCreate(savedInstanceState);  
+    }
 }
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production and gyantChatInit should be called before onCreate.
