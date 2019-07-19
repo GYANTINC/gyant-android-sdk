@@ -76,7 +76,7 @@ Add the following permissions to your manifest file.
 
 # Getting Started
 
-### Create a view
+## Start the SDK
 
 ```
 @Override  
@@ -88,15 +88,18 @@ protected void onCreate(Bundle savedInstanceState) {
     GyantChat gyantChat = new GyantChat();
     gyantChat.gyantChatInit("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
     
-    View gyantView = gyantChat.gyantChatView(this, getLifecycle());
-    FrameLayout frameLayout = (FrameLayout) findViewById(R.id.someContainer);
-    frameLayout.addView(gyantView);
 }
 ```
 
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
-### Create a Fragment
+## Present Chat Interface
+
+For presenting the chat interface GyantChatSDK provides three different methods.
+
+### Gyant View
+
+### Gyant Fragment
 
 ```
 @Override  
@@ -118,7 +121,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
-### Create an Activity
+### Gyant Activity
 
 ```
 public class DisplayGyantChatActivity extends GyantChatActivity {  
