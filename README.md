@@ -99,21 +99,43 @@ For presenting the chat interface GyantChatSDK provides three different methods.
 ### Gyant View
 
 ```
-View chatView = GyantChat.createView(this, getLifecycle());
+GyantView gyantView;
+
+...
+
+this.gyantView = GyantChat.createView(this, getLifecycle());
 FrameLayout frameLayout = (FrameLayout) findViewById(R.id.someContainer);
 frameLayout.addView(gyantView);
+
+...
+
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    this.gyantView.onRequestPermissionsResult(requestCode, permissions, grantResults);
+}
+
 ```
 
 ### Gyant Fragment
 
 ```
+GyantFragment frag;
 
-Fragment frag = GyantChat.createFragment();  
+...
+
+this.frag = GyantChat.createFragment();  
 
 getSupportFragmentManager()  
     .beginTransaction()  
     .add(R.id.someContainer, frag,  BuildConfig.APPLICATION_ID + ".GyantFragment")  
     .commit();
+    
+...
+
+@Override
+public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    this.frag.onRequestPermissionsResult(requestCode, permissions, grantResults);
+}
 ```
 
 ### Gyant Activity
