@@ -107,7 +107,7 @@ protected void onCreate(Bundle savedInstanceState) {
     themeMap.put("bot", botPalette);
     themeMap.put("provider", providerPalette);
 
-    GyantChat.start("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
+    GyantChat.start("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true, themeMap);
 ```
 
 **Note**: The isDev parameter must be set to false before submitting the app to production.
