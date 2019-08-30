@@ -157,5 +157,98 @@ public class DisplayGyantChatActivity extends GyantChatActivity {
 
 The  [samples](https://github.com/GYANTINC/gyant-android-sdk-samples)  included with the SDK for Android are standalone projects that are already set up for you. You can also integrate the SDK for Android with your own existing project.
 
+## Theme Configuration
+
+To allow a more seamless integration into existing apps, the SDK supports color customization. Currently, two different palletes are available: bot and provider. The bot palette is used during chat bot conversations while the provider will be loaded when the user is talking to a human (doctor, nurse, etc).
+
+For each palette the following RGB colors could be customized:
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>bot</th>
+    <th>provider</th>
+  </tr>
+  <tr>
+    <td>primaryColor1</td>
+    <td><ul><li>Background color</li><li>Auto-complete matches highlight text color</li><li>Hyperlink text color</li></ul></td>
+    <td>ff4cb9f7</td>
+    <td>ff1f5075</td>
+  </tr>
+  <tr>
+    <td>primaryColor2</td>
+    <td>Clinic and Provider cards text color</td>
+    <td>ff3ea9f5</td>
+    <td>ff3ea9f5</td>
+  </tr>
+  <tr>
+    <td>primaryColor3</td>
+    <td>n/a</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>primaryColor4</td>
+   <td><ul><li>QuickResponses bubble background color</li><li>Input box background color</li><li>User bubble background color</li></td>
+    <td>ff79c7ff</td>
+    <td>ff296a9c</td>
+  </tr>
+  <tr>
+    <td>secondaryColor1</td>
+    <td><ul><li>Auto-complete list background color</li><li>Connecting indicator background color</li><li>Scroll to bottom button icon color</li><li>Send button enabled icon color</li><li>Input box cursor color</li><li>Undo button icon color</li></ul></td>
+    <td>ffffffff</td>
+    <td>ffffffff</td>
+  </tr>
+  <tr>
+    <td>secondaryColor2</td>
+    <td>Success notification background color</td>
+    <td>ff4cd964</td>
+    <td>ff4cd964</td>
+  </tr>
+  <tr>
+    <td>secondaryColor3</td>
+    <td>Error notification background color</td>
+    <td>fff55040</td>
+    <td>fff55040</td>
+  </tr>
+  <tr>
+    <td>secondaryColor4</td>
+    <td>Provider bubble background color</td>
+    <td>ffff79c7</td>
+    <td>ff62849e</td>
+  </tr>
+  <tr>
+    <td>extraColor1</td>
+    <td><ul><li>Card title text color</li><li>Connecting indicator text color</li><li>Auto-complete non-matches text color</li></ul></td>
+    <td>ff13324a</td>
+    <td>ff0f77c6</td>
+  </tr>
+  <tr>
+    <td>extraColor2</td>
+    <td>Card subtitle text color</td>
+    <td>ff767676</td>
+    <td>ff767676</td>
+  </tr>
+  <tr>
+    <td>extraColor3</td>
+    <td>Send button disabled icon color</td>
+    <td>ffaaaaaa</td>
+    <td>ffaaaaaa</td>
+  </tr>
+  <tr>
+    <td>extraColor4</td>
+    <td>n/a</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>extraColor5</td>
+   <td><ul><li>Scroll to bottom button background color</li><li>Send button background color</li></td>
+    <td>ff13324a</td>
+    <td>ff13324a</td>
+  </tr>
+</table>
+
 
 **Copyright © 2019 GYANT.com, Inc. All rights reserved.**
