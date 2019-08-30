@@ -89,6 +89,26 @@ protected void onCreate(Bundle savedInstanceState) {
     
 }
 ```
+or, if you want to change the chat view appearance:
+```
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    // ...
+    Map botPalette = new HashMap<String, String>();
+    botPalette.put("primaryColor1","ff0000");
+
+    Map providerPalette = new HashMap<String, String>();
+    botPalette.put("primaryColor1","00ff00");
+
+
+    Map themeMap = new HashMap<String, Map<String, String>>();
+    themeMap.put("bot", botPalette);
+    themeMap.put("provider", providerPalette);
+
+    GyantChat.start("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
+```
 
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
@@ -215,7 +235,7 @@ For each palette the following RGB colors could be customized:
   <tr>
     <td>secondaryColor4</td>
     <td>Provider bubble background color</td>
-    <td>ffff79c7</td>
+    <td>ff62849e</td>
     <td>ff62849e</td>
   </tr>
   <tr>
@@ -249,6 +269,7 @@ For each palette the following RGB colors could be customized:
     <td>ff13324a</td>
   </tr>
 </table>
+
 
 
 **Copyright © 2019 GYANT.com, Inc. All rights reserved.**
