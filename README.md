@@ -110,6 +110,8 @@ protected void onCreate(Bundle savedInstanceState) {
     GyantChat.start("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true, themeMap);
 ```
 
+ For more details about theme configuration read [here](#theme-configuration).
+
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
 ## Present Chat Interface
