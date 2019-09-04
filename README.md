@@ -85,11 +85,15 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);  
     
     // ...
-    GyantChat.start("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true);
+    GyantChat gyantChat = GyantChat.getInstance()
+                .clientId("client_id")
+                .patientId("patient_id") //optinal
+                .isDev(true) //optinal
+                .start();
     
 }
 ```
-or, if you want to change the chat view appearance:
+if you want to change the chat view appearance:
 ```
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -107,10 +111,48 @@ protected void onCreate(Bundle savedInstanceState) {
     themeMap.put("bot", botPalette);
     themeMap.put("provider", providerPalette);
 
-    GyantChat.start("<YOUR-CLIENT-ID>",  "<YOUR-PATIENT-ID>", true, themeMap);
+    GyantChat gyantChat = GyantChat.getInstance()
+                .clientId("client_id")
+                .patientId("patient_id")
+                .withTheme(themeMap)
+                .isDev(true)
+                .start();
 ```
 
  For more details about theme configuration read [here](#theme-configuration).
+ 
+or, if you want to listen to messages sent by Gyant server or regiser a push token:
+```
+public class YourActivity extends AppCompatActivity 
+	implements GyantOnPushTokenListener, GyantOnMessageListener {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+
+	    // ...
+
+
+	    GyantChat gyantChat = GyantChat.getInstance()
+			.clientId("client_id")
+			.patientId("patient_id")
+			.setOnPushToken(this)
+			.onMessage(this)
+			.isDev(true)
+			.start();
+	    // ...
+	}
+	
+	@Override
+    	public String onPushToken() {
+        	return "token";
+    	}
+
+    @Override
+    public void onMessage(String message) {
+	//do something with message
+    }
+```
 
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
