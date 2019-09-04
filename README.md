@@ -121,7 +121,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
  For more details about theme configuration read [here](#theme-configuration).
  
-or, if you want to listen to messages sent by Gyant server or regiser a push token:
+or, if you want to listen to messages sent by Gyant server or register a push token:
 ```
 public class YourActivity extends AppCompatActivity 
 	implements GyantOnPushTokenListener, GyantOnMessageListener {
