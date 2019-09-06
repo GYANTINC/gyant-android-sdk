@@ -284,7 +284,7 @@ For each palette the following RGB colors could be customized:
   </tr>
   <tr>
     <td>extraColor1</td>
-    <td><ul><li>Card title text color</li><li>Connecting indicator text color</li><li>Auto-complete non-matches text color</li></ul></td>
+    <td><ul><li>Card title text color</li><li>Connecting indicator text color</li><li>Auto-complete non-matches text color</li><li>Provider avatar placeholder initials text color</li></ul></td>
     <td>ff13324a</td>
     <td>ff0f77c6</td>
   </tr>
@@ -302,7 +302,7 @@ For each palette the following RGB colors could be customized:
   </tr>
   <tr>
     <td>extraColor4</td>
-    <td>n/a</td>
+    <td>Provider avatar placeholder background color.</td>
     <td></td>
     <td></td>
   </tr>
