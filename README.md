@@ -142,16 +142,16 @@ public class YourActivity extends AppCompatActivity
 			.start();
 	    // ...
 	}
-	
-	@Override
-    	public void getToken() {
-        	return "token";
-    	}
 
-    @Override
-     public void getToken(CompletionHandler callback){
-        callback.onComplete("token123");
-    }
+    	@Override
+     	public void getToken(CompletionHandler callback){
+        	callback.onComplete("token123");
+    	}
+    
+     	@Override
+    	public void onMessage(String message) {
+	//do something with message
+    	}
 }
 ```
 
