@@ -120,8 +120,12 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 
  For more details about theme configuration read [here](#theme-configuration).
+
+**Note**: The isDev parameter must be set to false before submitting the app to production.
+
+
  
-or, if you want to listen to messages sent by Gyant server or register a push token:
+ To listen to messages sent by Gyant server implement GyantOnMessageListener and to register a push token implement GyantOnPushTokenListener:
 ```
 public class YourActivity extends AppCompatActivity 
 	implements GyantOnPushTokenListener, GyantOnMessageListener {
@@ -155,7 +159,14 @@ public class YourActivity extends AppCompatActivity
 }
 ```
 
-**Note**: The isDev parameter must be set to false before submitting the app to production.
+
+To change the patient id:
+```
+GyantChat.getInstance().changePatientId("new_patient_id")	
+```
+**Note**: If the patient id is changed the sdk will start a new conversation and lose the last conversation's history.
+
+
 
 ## Present Chat Interface
 
@@ -190,7 +201,8 @@ GyantFragment frag;
 
 this.frag = GyantChat.createFragment();  
 
-getSupportFragmentManager()  
+getSupp,
+tFragmentManager()  
     .beginTransaction()  
     .add(R.id.someContainer, frag,  BuildConfig.APPLICATION_ID + ".GyantFragment")  
     .commit();
