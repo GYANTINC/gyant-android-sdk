@@ -47,12 +47,34 @@ android {
 }
 ```
 
+### AndroidX repositories
+
+```	
+repositories {
+
+    maven { url 'https://gyant.mycloudrepo.io/public/repositories/mobile_sdk' }
+    
+    maven { url 'http://download.flutter.io' }
+}
+```	
+
+### Support repositories
+
+```	
+repositories {
+
+    maven { url 'https://gyant.mycloudrepo.io/public/repositories/mobile_sdk_support' }
+    
+    maven { url 'http://download.flutter.io' }
+}
+```	
+
 GyantChatSDK does not support the simulator archs in release mode. To allow the integration of the SDK and further tests in the simulator we have created separated debug and release versions of the SDK. 
 
 ```
-dependencies {
-    debugImplementation files('libs/gyantchatsdk-debug.aar')
-    releaseImplementation files('libs/gyantchatsdk-release.aar')
+    def gyantSDKVersion="1.0.9"
+    debugImplementation "com.gyant.gyant_chat_sdk:gyant_chat_sdk_debug:$gyantSDKVersion"
+    releaseImplementation "com.gyant.gyant_chat_sdk:gyant_chat_sdk_release:$gyantSDKVersion"
 ```
 
 GyantChat requires play-services-location.
