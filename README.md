@@ -4,13 +4,10 @@ Gyant Android SDK
 
 ![Logo](https://gyant.com/wp-content/uploads/2018/10/Gyant.Logotype.HorizontalLeft@2x-1.png)
 
-  
-
 # About
 
 GYANT combines messaging, AI, and medical experts to radically improve the diagnosis and treatment of non-urgent conditions. GYANT makes treatment faster, more effective & more delightful. Our purpose is to transform healthcare from the outside in — to create a new care standard for everyone.
 
-  
 
 # Requirements
 
@@ -20,18 +17,9 @@ GYANT combines messaging, AI, and medical experts to radically improve the diagn
 
 - Android Studio 3.4.+
 
-  
 Gyant SDK is compatible with Android 5.0 (API Level 21) and higher.
 
 # Getting Started
-
-## Download binaries
-
-On https://github.com/GYANTINC/gyant-android-sdk download the release and debug aar versions.
-
-## Copy binaries
-
-Add both files to libs folder in your project directory.
 
 ## Edit your app's build.gradle
 	
@@ -53,18 +41,6 @@ android {
 repositories {
 
     maven { url 'https://gyant.mycloudrepo.io/public/repositories/mobile_sdk' }
-    
-    maven { url 'http://download.flutter.io' }
-}
-```	
-
-### Support repositories
-
-```	
-repositories {
-
-    maven { url 'https://gyant.mycloudrepo.io/public/repositories/mobile_sdk_support' }
-    
     maven { url 'http://download.flutter.io' }
 }
 ```	
@@ -72,19 +48,30 @@ repositories {
 GyantChatSDK does not support the simulator archs in release mode. To allow the integration of the SDK and further tests in the simulator we have created separated debug and release versions of the SDK. 
 
 ```
-    def gyantSDKVersion="1.0.9"
+    def gyantSDKVersion="1.1.0"
     debugImplementation "com.gyant.gyant_chat_sdk:gyant_chat_sdk_debug:$gyantSDKVersion"
     releaseImplementation "com.gyant.gyant_chat_sdk:gyant_chat_sdk_release:$gyantSDKVersion"
+    implementation "com.google.android.gms:play-services-location:17.0.0"
 ```
 
-GyantChat requires play-services-location.
+### Support repositories
 
-```
-dependencies {
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
+```	
+repositories {
+
+    maven { url 'https://gyant.mycloudrepo.io/public/repositories/mobile_sdk_support' }
+    maven { url 'http://download.flutter.io' }
 }
-```
+```	
 
+GyantChatSDK does not support the simulator archs in release mode. To allow the integration of the SDK and further tests in the simulator we have created separated debug and release versions of the SDK. 
+
+```
+    def gyantSDKVersion="1.1.0"
+    debugImplementation "com.gyant.gyant_chat_sdk:gyant_chat_sdk_debug:$gyantSDKVersion"
+    releaseImplementation "com.gyant.gyant_chat_sdk:gyant_chat_sdk_release:$gyantSDKVersion"
+    implementation "com.google.android.gms:play-services-location:16.0.0"
+```
 
 ## Edit manifest permissions
 
@@ -109,13 +96,14 @@ protected void onCreate(Bundle savedInstanceState) {
     // ...
     GyantChat gyantChat = GyantChat.getInstance()
                 .clientId("client_id")
-                .patientId("patient_id") //optinal
-                .isDev(true) //optinal
+                .isDev(true)
                 .start();
     
 }
 ```
-if you want to change the chat view appearance:
+
+### Customize Appearance
+
 ```
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +123,6 @@ protected void onCreate(Bundle savedInstanceState) {
 
     GyantChat gyantChat = GyantChat.getInstance()
                 .clientId("client_id")
-                .patientId("patient_id")
                 .withTheme(themeMap)
                 .isDev(true)
                 .start();
@@ -145,12 +132,11 @@ protected void onCreate(Bundle savedInstanceState) {
 
 **Note**: The isDev parameter must be set to false before submitting the app to production.
 
+### Listen to SDK data
 
- 
- To listen to messages sent by Gyant server implement GyantOnMessageListener and to register a push token implement GyantOnPushTokenListener:
 ```
 public class YourActivity extends AppCompatActivity 
-	implements GyantOnPushTokenListener, GyantOnMessageListener {
+	implements GyantChatListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -158,36 +144,79 @@ public class YourActivity extends AppCompatActivity
 
 	    // ...
 
-
 	    GyantChat gyantChat = GyantChat.getInstance()
 			.clientId("client_id")
-			.patientId("patient_id")
-			.setOnPushToken(this)
-			.onMessage(this)
+			.listener(this)
 			.isDev(true)
 			.start();
 	    // ...
 	}
 
-    	@Override
-     	public void getToken(CompletionHandler callback){
-        	callback.onComplete("token123");
-    	}
-    
-     	@Override
-    	public void onMessage(String message) {
-	//do something with message
-    	}
+	@Override
+	public void getToken(CompletionHandler callback){
+		callback.onComplete("token123");
+	}
+
+	@Override
+	public void onMessage(String message) {
+		// place your code here
+	}
+
+	@Override
+	public void onDiagnosis(Map diagnosis)
+		// place your code here
+	}
 }
 ```
 
+### Changing patient data
 
-To change the patient id:
-```
-GyantChat.getInstance().changePatientId("new_patient_id")	
-```
-**Note**: If the patient id is changed the sdk will start a new conversation and lose the last conversation's history.
+All the fields available in GyantChatPatientData are optional. 
 
+```
+GyantChat.getInstance().changePatientData(<NEW-PATIENT-DATA>)	
+```
+
+<table>
+<tr>
+	<th>Field</th>
+	<th>Description</th>
+</tr>
+<tr>
+    <td>patientId</td>
+    <td>Patient ID on the client’s side and can be any string/format. Max. lenght is 4096</td>
+</tr>
+<tr>
+	<td>name</td>
+    <td>Patient full name</td>
+</tr>
+<tr>
+	<td>firstName</td>
+    <td>Patient first name</td>
+</tr>
+<tr>
+	<td>lastName</td>
+    <td>Patient last name</td>
+</tr>
+<tr>
+	<td>gender</td>
+    <td>Patient gender, e.g: male or female.</td>
+</tr>
+<tr>
+	<td>phone</td>
+    <td>Patient phone number</td>
+</tr>
+<tr>
+	<td>dateOfBirth</td>
+    <td>Patient date of birth. Can use UTC, e.g. 2019-03-26T20:28:32.383+0000</td>
+</tr>
+<tr>
+	<td>visitReason</td>
+    <td>Patient visit reason if known</td>
+</tr>
+</table>
+
+**Note**: When the patient data is changed the sdk will start a new conversation and lose the last conversation's history.
 
 
 ## Present Chat Interface
@@ -197,11 +226,11 @@ For presenting the chat interface GyantChatSDK provides three different methods.
 ### Gyant View
 
 ```
-GyantView gyantView;
+private GyantView gyantView;
 
 ...
 
-this.gyantView = GyantChat.createView(this, getLifecycle());
+gyantView = GyantChat.createView(this, getLifecycle());
 FrameLayout frameLayout = (FrameLayout) findViewById(R.id.someContainer);
 frameLayout.addView(gyantView);
 
@@ -209,7 +238,7 @@ frameLayout.addView(gyantView);
 
 @Override
 public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-    this.gyantView.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    gyantView.onRequestPermissionsResult(requestCode, permissions, grantResults);
 }
 
 ```
@@ -217,14 +246,13 @@ public void onRequestPermissionsResult(int requestCode, @NonNull String[] permis
 ### Gyant Fragment
 
 ```
-GyantFragment frag;
+private GyantFragment frag;
 
 ...
 
-this.frag = GyantChat.createFragment();  
+frag = GyantChat.createFragment();  
 
-getSupp,
-tFragmentManager()  
+getSupportFragmentManager()  
     .beginTransaction()  
     .add(R.id.someContainer, frag,  BuildConfig.APPLICATION_ID + ".GyantFragment")  
     .commit();
@@ -233,7 +261,7 @@ tFragmentManager()
 
 @Override
 public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-    this.frag.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    frag.onRequestPermissionsResult(requestCode, permissions, grantResults);
 }
 ```
 
