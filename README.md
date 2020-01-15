@@ -2,7 +2,7 @@
 Gyant Android SDK
 ==================
 
-![Logo](https://gyant.com/wp-content/uploads/2018/10/Gyant.Logotype.HorizontalLeft@2x-1.png)
+![Logo](https://gyant.com/wp-content/themes/gyant/images/gyant-logo.svg)
 
 # About
 
@@ -48,7 +48,7 @@ repositories {
 GyantChatSDK does not support the simulator archs in release mode. To allow the integration of the SDK and further tests in the simulator we have created separated debug and release versions of the SDK. 
 
 ```
-    def gyantSDKVersion="1.1.0"
+    def gyantSDKVersion="1.1.1"
     debugImplementation "com.gyant.gyant_chat_sdk:gyant_chat_sdk_debug:$gyantSDKVersion"
     releaseImplementation "com.gyant.gyant_chat_sdk:gyant_chat_sdk_release:$gyantSDKVersion"
     implementation "com.google.android.gms:play-services-location:17.0.0"
